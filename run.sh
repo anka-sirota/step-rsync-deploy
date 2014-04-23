@@ -30,7 +30,7 @@ fi
 info "using remote port $remote_port"
 
 # key option
-rsync_command="ssh -o BatchMode=yes -p $remote_port" # Batchmode to prevent it from waiting on user input
+rsync_command="ssh -o BatchMode=yes,UserKnownHostsFile=/dev/null,StrictHostKeyChecking=no -p $remote_port" # Batchmode to prevent it from waiting on user input
 if [ -n "$WERCKER_RSYNC_DEPLOY_SSHKEY" ]
 then
     rsync_command="$rsync_command -i $WERCKER_RSYNC_DEPLOY_SSHKEY"
